@@ -35,7 +35,7 @@ public class Credentials
 
     public void setPasswordCredentials(String password_credentials){
         if(password_credentials.isEmpty()){
-         System.out.println("Setter message : <La password non deve essere vuota!>");
+         System.out.println("Setter message : <The password can't be empty!>");
         }
         else{
          this.password_credentials = password_credentials;
@@ -49,7 +49,7 @@ public class Credentials
 
     public void setEmailContainers(String email_credentials){
         if(email_credentials.isEmpty()){
-         System.out.println("Setter message : <La e-mail non puo essere vuota!>");
+         System.out.println("Setter message : <The email can't be empty!>");
         }
         else{
          this.email_credentials = email_credentials;    
@@ -59,7 +59,7 @@ public class Credentials
 
     public void setProduct(String product){
         if(product.isEmpty()){
-         System.out.println("Setter message : <Il product non puo essere vuoto!>");
+         System.out.println("Setter message : <The service can't be empty!>");
         }
         else{
          this.product = product;

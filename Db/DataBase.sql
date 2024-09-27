@@ -20,3 +20,8 @@ CREATE TABLE credentials(
     PRIMARY KEY (id_credential , id_user_credentials),
     FOREIGN KEY(id_user_credentials) REFERENCES user(id_user) ON DELETE CASCADE
 );
+
+
+DROP TABLE credentials;
+
+DROP TABLE user;

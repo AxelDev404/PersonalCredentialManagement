@@ -30,7 +30,7 @@ public class User
 
    public void setUsername(String username) {
       if(username.isEmpty() || username.length() < 4){
-       System.out.println("Setter message : <Username non deve essere nullo e deve contenere 4 o piu caratteri!>");
+       System.out.println("Setter message : <Username can't be empty and must be over or equal to 4 characters!>");
       }
       else{
        this.username = username;
@@ -40,7 +40,7 @@ public class User
 
    public void setPassword(String password) {
       if(password.isEmpty() || password.length() < 8){
-       System.out.println("Setter message : <La password deve essere minimo di 8 caratteri!>"); 
+       System.out.println("Setter message : <The password must be over or equal than 8 characters!>"); 
       }
       else{
        this.password = password;
@@ -50,7 +50,7 @@ public class User
 
    public void setName(String name) {
       if(name.isEmpty()){
-       System.out.println("Setter message : <Il nome non puo essere nullo!>");
+       System.out.println("Setter message : <Name can't be empty!>");
       }
       else{
        this.name = name;
@@ -60,7 +60,7 @@ public class User
 
    public void setPhone_number(String phone_number) {
       if(phone_number.isEmpty() || phone_number.length() < 10){
-       System.out.println("Setter message : <Il numero di telefono non e valido!>");    
+       System.out.println("Setter message : <Invalid number phone!>");    
       }
       else{
        this.phone_number = phone_number;
@@ -70,7 +70,7 @@ public class User
     
    public void setEmail(String email){
       if(email.isEmpty()){
-           System.out.println("Setter message : <Email non valida!>");
+           System.out.println("Setter message : <Invalid email!>");
       }
       else{
            this.email = email;

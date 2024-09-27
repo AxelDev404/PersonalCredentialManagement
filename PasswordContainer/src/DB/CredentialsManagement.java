@@ -7,13 +7,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class CredentialsManagementAdding 
+public class CredentialsManagement 
 {
     public void addCredentials(Credentials credentials , int id)
     {
         try 
         {
-         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "Youreusername" , "Yourpassword");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" , "root2003A03");
          String sql = "INSERT INTO credentials (id_user_credentials , pwd , username , email , product) VALUES (?, ?, ?, ?, ?)";
 
          PreparedStatement ps = connection.prepareStatement(sql);
@@ -26,7 +26,7 @@ public class CredentialsManagementAdding
 
          ps.executeUpdate();
          
-         System.out.println("Credenziali aggiunte con successo");
+         System.out.println("Credential was added successfully");
 
         } catch(SQLException e){e.printStackTrace();}
     }   

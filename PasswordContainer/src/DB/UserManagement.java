@@ -9,14 +9,14 @@ import java.sql.SQLException;
 
 import User.User;
 
-public class UserManagementAdding
+public class UserManagement
 {
   private boolean userExist = false;
 
   public void userAdding(User user){
     try 
     {
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" ,"Youreusername" , "Youreusername");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" ,"root" , "root2003A03");
 
       String sql = "INSERT INTO user (username , pwd , nome , email , number_phone) VALUES(?, ?, ?, ?, ?)";
          
@@ -30,7 +30,7 @@ public class UserManagementAdding
 
       ps.executeUpdate();
           
-      System.out.println("Registrazione completata");
+      System.out.println("Registration is complete");
             
     } catch (SQLException e){e.printStackTrace();}
   }
@@ -40,7 +40,7 @@ public class UserManagementAdding
 
     try 
     {
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management", "Youreusername" , "Youreusername");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management", "root" , "root2003A03");
       String sql = "SELECT id_user FROM user WHERE username = ?";
 
       PreparedStatement ps = connection.prepareStatement(sql);
@@ -52,7 +52,7 @@ public class UserManagementAdding
 
       if(resultSet.next()){   //controlla le righe con rs.next per verificare se esistono altri utenti
         userExist = true; 
-        System.out.println("Utente gia presente");
+        System.out.println("The user already exist");
       } 
     
     } catch (SQLException e) {e.printStackTrace();}
