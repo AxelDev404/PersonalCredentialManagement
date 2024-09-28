@@ -139,39 +139,13 @@ public class Main
                     break;
                                     
                     case "2":  //PROVA AD OTTIMIZARE CON SOTTOCLASSI O CLASSI 
-                                    
-                      try 
-                      {
-                        idTemp = resultSet.getInt("id_user"); //ok
 
-                        String sql2 = "SELECT id_credential,pwd,username,email,product FROM credentials WHERE id_user_credentials = ?"; //ok
-        
-                        PreparedStatement stmt2 = connection.prepareStatement(sql2); //ok
-                        stmt2.setInt(1, idTemp); //ok
-                        ResultSet resultSet2 = stmt2.executeQuery(); //ok
+                     idTemp = resultSet.getInt("id_user"); //ok
 
-                        while (resultSet2.next()) {//ok
-                          
-                        
-                          System.out.println("|____________________"+resultSet2.getString("product")+"____________________|");
-                          System.out.println("|");
-                          System.out.println("| ID user : "+resultSet.getInt("id_user"));//ok
-                          System.out.println("|");
-                          System.out.println("| ID credential : "+resultSet2.getInt("id_credential"));
-                          System.out.println("|");
-                          System.out.println("| Username : "+resultSet2.getString("username"));
-                          System.out.println("|");
-                          System.out.println("| Email : "+resultSet2.getString("email"));
-                          System.out.println("|");
-                          System.out.println("| Password : "+resultSet2.getString("pwd"));
-                          System.out.println("|");
-                          System.out.println("| Service : "+resultSet2.getString("product"));
-                          System.out.println();
-                                                    
-                        }
-                       
-                      } catch (SQLException e) {e.printStackTrace();}
-                      
+                     CredentialsManagement cm = new CredentialsManagement();
+
+                     cm.viewCredentials(idTemp);
+
                     break;
                     
                     case "3":
@@ -203,136 +177,54 @@ public class Main
                         switch (menuCredentials) 
                         {
                           case "1":
+                           CredentialsManagement cm2 = new CredentialsManagement();
 
                            int id_credential_insert;
                            idTemp = resultSet.getInt("id_user"); //ok
-                         
-
-                           sqlPerIdCredential = "SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND id_credential = ?";
-
+                                                     
                            System.out.print("Insert the credential id : ");
                            id_credential_insert = Integer.parseInt(sc.nextLine());
 
-                           PreparedStatement stmt3 = connection.prepareStatement(sqlPerIdCredential);
-                           
-                           stmt3.setInt(1, idTemp);
-                           stmt3.setInt(2, id_credential_insert);
-                           
-                           ResultSet resultset3 = stmt3.executeQuery();
+                           cm2.filterSerchByIdCredentials(id_credential_insert, idTemp);
 
-                           //QUERY CONTROLL FOR ID
-
-                           if(!resultset3.next()){
-                             System.out.println("No data infromation for this ID user");
-                           }
-                           else{
-                              do
-                              {                
-                               System.out.println("| Username : "+resultset3.getString("username"));
-                               System.out.println("|");
-                               System.out.println("| Email : "+resultset3.getString("email"));
-                               System.out.println("|");
-                               System.out.println("| Password : "+resultset3.getString("pwd"));
-                               System.out.println("|");
-                               System.out.println("| Product : "+resultset3.getString("product"));                        
-                              }while(resultset3.next());                     
-                            }
-                  
                           break;  
 
                           case "2":
+                           CredentialsManagement cm3 = new CredentialsManagement();
 
-                            String username_insert = null;
-                            sqlPerUsername ="SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND username = ?";
-
-                            System.out.print("Insert the username : ");
-                            username_insert = sc.nextLine();
-
-                            PreparedStatement stmt4 = connection.prepareStatement(sqlPerUsername);
-                            stmt4.setInt(1, idTemp);
-                            stmt4.setString(2, username_insert);
+                           idTemp = resultSet.getInt("id_user"); //ok
+                           String username_insert = null;
                             
-                            ResultSet resultset4 = stmt4.executeQuery();
+                           System.out.print("Insert the username : ");
+                           username_insert = sc.nextLine();
 
-                            if(!resultset4.next()){
-                              System.out.println("No data infromation for this username");
-                            }
-                            else{
-                              do
-                              {
-                                System.out.println("| Username : "+resultset4.getString("username"));
-                                System.out.println("|");
-                                System.out.println("| Email : "+resultset4.getString("email"));
-                                System.out.println("|");
-                                System.out.println("| Password : "+resultset4.getString("pwd"));
-                                System.out.println("|");
-                                System.out.println("| Product : "+resultset4.getString("product")); 
-                              }while(resultset4.next());
-                            }
-
+                            cm3.filterSearchForUsername(username_insert, idTemp);
+                            
                           break;
 
                           case "3":
+                           CredentialsManagement cm4 = new CredentialsManagement();
 
-                           String email_insert = null;
-                           sqlPerEmail = "SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND email = ?";
+                           idTemp = resultSet.getInt("id_user"); //ok
+                           String email_insert = null;                          
                            
                            System.out.print("Insert the email : ");
                            email_insert = sc.nextLine();
 
-                           PreparedStatement stmt5 = connection.prepareStatement(sqlPerEmail);
-
-                           stmt5.setInt(1, idTemp);
-                           stmt5.setString(2, email_insert);
-                           
-                           ResultSet resultSet5 = stmt5.executeQuery();
-
-                           if(!resultSet5.next()){
-                             System.out.println("No data information for this email");
-                           }
-                           else{
-                              do
-                              {
-                               System.out.println("| Username : "+resultSet5.getString("username"));
-                               System.out.println("|");
-                               System.out.println("| Email : "+resultSet5.getString("email"));
-                               System.out.println("|");
-                               System.out.println("| Password : "+resultSet5.getString("pwd"));
-                               System.out.println("|");
-                               System.out.println("| Product : "+resultSet5.getString("product")); 
-                              }while(resultSet5.next());
-                           }
+                           cm4.searchForEmail(email_insert, idTemp);
 
                           break;
 
                           case "4":
-                           String product_insert = null;
-                           sqlPerProduct = "SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND product = ?";
+                           CredentialsManagement cm5 = new CredentialsManagement();
 
-                           System.out.print("Insert the service : ");
+                           idTemp = resultSet.getInt("id_user"); //ok
+                           String product_insert = null;
+
+                           System.out.print("Insert the product : ");
                            product_insert = sc.nextLine();
 
-                           PreparedStatement stmt6 = connection.prepareStatement(sqlPerProduct);
-                           stmt6.setInt(1, idTemp);
-                           stmt6.setString(2, product_insert);
-
-                           ResultSet  resultSet6 = stmt6.executeQuery();
-
-                           if(!resultSet6.next()){
-                             System.out.println("No data information for this service");
-                           }
-                           else{
-                              do
-                              {
-                                System.out.println("| Username : "+resultSet6.getString("username"));
-                                System.out.println("|");
-                                System.out.println("| Email : "+resultSet6.getString("email"));
-                                System.out.println("|");
-                                System.out.println("| Password : "+resultSet6.getString("pwd"));
-                                System.out.println("|");
-                                System.out.println("| Product : "+resultSet6.getString("product")); 
-                              }while(resultSet6.next());
-                           }
+                           cm5.searchForProduct(product_insert, idTemp);
 
                           break;
 
