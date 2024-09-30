@@ -16,7 +16,7 @@ public class UserManagement
   public void userAdding(User user){
     try 
     {
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" ,"root" , "root2003A03");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" ,"username" , "pwd");
 
       String sql = "INSERT INTO user (username , pwd , nome , email , number_phone) VALUES(?, ?, ?, ?, ?)";
          

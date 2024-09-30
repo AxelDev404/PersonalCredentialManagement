@@ -77,6 +77,4 @@ public class User
       }
         
    }
-   //email.contains("@gmail.com")
-
 }

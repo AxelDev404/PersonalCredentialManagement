@@ -35,10 +35,10 @@ public class Main
     String menu = null , menuUser = null;
     String username_logIn = null , password_logIn = null;
     
-    //VARIABILI UTENTE
+    //VAR USER
     String username = null , password = null , nome = null , email = null , numeroTel = null;  
 
-    //VARIABILI CREDENZIALI
+    //VAR CREDENTIALS
     String password_credentials = null , username_credentials = null , email_credentials = null , product = null;
     int id_user_credentials = 0;
 
