@@ -47,7 +47,7 @@ public class Main
       //SQL QUERY
       String sql = "SELECT pwd,username,id_user,email,nome,number_phone FROM user WHERE username=?";
         
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" , "root2003A03");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "username" , "pwd");
       PreparedStatement stmt = connection.prepareStatement(sql);
                
       do
@@ -92,8 +92,8 @@ public class Main
                             
               if(password_logIn.equals(resultSet.getString("pwd")) && username_logIn.equals(resultSet.getString("username")))
               {
-                int idTemp = 0; //ok // variabile temporenaea per la ricerca dell id utente
-                //〈〉
+                int idTemp = 0;//temporany variable for the id user
+                
                 do
                 {
                   System.out.println();
@@ -109,8 +109,6 @@ public class Main
                   System.out.println("|[4] [ Add credential ]");
                   System.out.println("|");
                   System.out.println("|[5] [ Quit ]");
-
-                  //visualizza per dettaglio es product id_credential
 
                   System.out.println();
 
@@ -138,7 +136,7 @@ public class Main
 
                     break;
                                     
-                    case "2":  //PROVA AD OTTIMIZARE CON SOTTOCLASSI O CLASSI 
+                    case "2": 
 
                      idTemp = resultSet.getInt("id_user"); //ok
 
@@ -151,9 +149,9 @@ public class Main
                     case "3":
                       System.out.println("Here you can filter all your data by [ID USER , ID CREDENTIAL , USERNAME , EMAIL , SERVICE] ");
                       
-                      String sqlPerID , sqlPerIdCredential , sqlPerUsername , sqlPerEmail , sqlPerProduct , menuCredentials = null;
-                      
-                      //QUERY
+                      String  menuCredentials = null;
+
+                      //Filter search Section
 
                       do
                       {
@@ -239,10 +237,12 @@ public class Main
 
                     case "4":
 
+                      //Creation of credentials
+
                       System.out.println();
                       System.out.println("Username and email are optional values");
                       System.out.println();
-                      //TRADUCI
+                      
                       do
                       {
 
@@ -291,8 +291,8 @@ public class Main
 
           case "2":
 
-            //crea un do while nel caso con parametro checkUsers magari con una domanda se vuole riprovare o no 
-            //TRADUCI
+            //User registration
+            
             do
             {
               System.out.print("Username : ");

@@ -14,7 +14,7 @@ public class CredentialsManagement
     {
         try 
         {
-         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" , "root2003A03");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "username" , "pwd");
          String sql = "INSERT INTO credentials (id_user_credentials , pwd , username , email , product) VALUES (?, ?, ?, ?, ?)";
 
          PreparedStatement ps = connection.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class CredentialsManagement
     {
       try 
       {
-       Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" , "root2003A03");
+       Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "username" , "pwd");
        String sql ="SELECT id_credential,pwd,username,email,product FROM credentials WHERE id_user_credentials = ?";
 
        PreparedStatement ps = connection.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class CredentialsManagement
     {
        try
        {
-         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" ,"root2003A03");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "username" ,"pwd");
          String sqlPerIdCredential = "SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND id_credential = ?";
         
          PreparedStatement ps = connection.prepareStatement(sqlPerIdCredential);
@@ -104,7 +104,7 @@ public class CredentialsManagement
     {
         try 
         {
-         Connection connection = DriverManager.getConnection("jdbc:mysql://loaclhost:3306/credentials_management" , "root" , "root2003A03");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://loaclhost:3306/credentials_management" , "username" , "pwd");
          String sqlPerUsername ="SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND username = ?";
 
          PreparedStatement ps = connection.prepareStatement(sqlPerUsername);
@@ -138,7 +138,7 @@ public class CredentialsManagement
     {
        try 
        {
-         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" , "root2003A03");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "username" , "pwd");
          String sqlPerProduct = "SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND product = ?";
 
          PreparedStatement ps = connection.prepareStatement(sqlPerProduct);
@@ -172,7 +172,7 @@ public class CredentialsManagement
     {
        try 
        {
-         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "root" , "root2003A03");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/credentials_management" , "username" , "pwd");
          String sqlPerEmail = "SELECT username , pwd , email , product FROM credentials WHERE id_user_credentials = ? AND email = ?";
 
          PreparedStatement ps = connection.prepareStatement(sqlPerEmail);
